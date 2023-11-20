@@ -1,4 +1,7 @@
 
+--  CREATE DATABASE
+CREATE DATABASE brief_myresources.
+--  CREATE THE USERS TABLE
  CREATE TABLE utilisateur (
    user_id int(11) PRIMARY KEY auto_increment,
    u_name varchar(255),
@@ -118,4 +121,17 @@
 -- as a full stack devloper i modify the deadline of the project
     UPDATE project 
     SET date_fin= '29/11/2023'
-   ,WHERE project_id =1;
+    WHERE project_id =1;
+    -- afficher tout les data in mysql
+    SELECT * FROM users INNER JOIN squad_members
+    on users.user_id=squad_members.user_id
+    INNER JOIN squad 
+    on squad.squad_id=squad_members.squad_id 
+    INNER JOIN project 
+    on squad.project_id=project.project_id 
+    INNER JOIN ressources 
+    on squad.squad_id=ressources.squad_id 
+    INNER JOIN subcategory 
+    on ressources.sub_cat_id=subcategory.sub_cat_id 
+    INNER JOIN categorie
+    on subcategory.categorie_id=categorie.categorie_id;
